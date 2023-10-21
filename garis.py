@@ -306,8 +306,8 @@ class GARIS(object):
 
 
 if __name__ == "__main__":
-    query = "cisco tp-link Zyxel"
-    ENTITY = 'ELEC'
+    query = "BMV HAVAL Lada"
+    ENTITY = 'Auto'
     language = 'ru'
     language_subwords = {
         'ru': ['описание', 'на русском', 'похожие', 'аналоги'],
