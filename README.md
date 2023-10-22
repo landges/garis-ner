@@ -1,5 +1,27 @@
 # garis-ner
 
-Modern systems that solve the problem of extracting named entities differ from the models presented in modern benchmarks in that they use several approaches simultaneously to achieve high accuracy: compiling a reference, referring to knowledge bases, etc. This approach allows to expand the application of the model or to eliminate the main drawbacks. 
+Современные системы, решающие проблему извлечения именованных сущностей, отличаются от моделей, представленных в современных бенчмарках, тем, что они используют несколько подходов одновременно для достижения высокой точности: составление справочника, обращение к базам знаний и т.д. Такой подход позволяет расширить область применения модели или устранить основные недостатки. 
 
-Based on the above-mentioned approach, a method for automatic collection of data from open sources was developed, which allows to prepare a neural network model to solve narrow problems with a minimum input set of parameters using the supervised systems. When developing the algorithm, the most general designs, not oriented to a specific task, were applied, and the minimum technical requirements allow to use it on computers with non-premium components. 
+На основе вышеупомянутого подхода был разработан метод автоматического сбора данных из открытых источников, который позволяет подготовить нейросетевую модель для решения узких задач с минимальным входным набором параметров с использованием контролируемых систем. При разработке алгоритма были применены самые общие конструкции, не ориентированные на конкретную задачу, а минимальные технические требования позволяют использовать его на компьютерах с компонентами не премиум-класса.
+
+Алгоритм формирования списка объектов
+Вход: K, N, F
+Выход: D – массив размеченных данных.
+1: для каждого языкового значения f∈F:
+2:	формируем множество запросов S.
+3:	для каждого запроса формируем множество ссылок L:
+4:			OUV=∅, INV=∅
+5:			для всех l из L:
+6:				формируем множество кандидатов из разметки B.
+7:				если в теле кандидата содержится тело запроса:
+8:					включаем во множество ядра INV:
+9:				иначе: включаем во множество потенциально близких к ядру OUV.
+10:			повторять
+11:	повторять
+12:		для каждого кандидата из множества OUV:
+13:			считаем степень принадлежности к ядру:
+14:			если степень принадлежности больше порогового значения:
+15:				добавляем кандидата во множество INV.
+16:			иначе: отбрасываем
+17:	    повторять
+18: повторять
